@@ -35,26 +35,8 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     min-height: 100vh;
+    overflow: hidden;
   }
-
-  button {
-  border: 1px solid transparent;
-  padding: 0.5rem;
-  font-family: inherit;
-  background-color: #646cff;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-  background-color: #1a1a1a;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 1px solid -webkit-focus-ring-color;
-}
 
 @media (prefers-color-scheme: light) {
   :root {
