@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { api } from '../../lib/axios'
 import { FormElement } from './styles'
 import movie from '../../assets/cinema.webp'
 
@@ -9,13 +8,17 @@ const queryFormSchema = z.object({
   query: z
     .string()
     .min(3, {message: 'Digite ao menos 3 caracteres.'})
-    .transform((query) => query.replace(/ /g, '%'))
+    .transform((query) => query.replace(/ /g, '%20'))
     .transform((query) => query.toLocaleLowerCase())
 })
 
+interface SearchProps {
+  functionGetMovie: (query: string) => void
+}
+
 type QueryFormData = z.infer<typeof queryFormSchema>
 
-export function SearchComponent() {
+export function SearchComponent({functionGetMovie}: SearchProps) {
   
   const { 
     register, 
@@ -23,27 +26,10 @@ export function SearchComponent() {
     reset 
   } = useForm<QueryFormData>({ resolver: zodResolver(queryFormSchema)})
 
-  async function handleSearch(data: QueryFormData) {
-    try {
-      const query = data.query
-
-      await api.get(`${query}&page=1&include_adult=false`)
-        .then((response) => {
-          console.log(response.data.results)
-        })
-        .catch((error) => {
-          console.log(error.message)
-        })
-    } catch (error) {
-      console.log(error)
-    }
-
-
+  function handleSearch(data: QueryFormData) {
+    functionGetMovie(data.query)
     reset()
   }
-
-  const teste = process.env.TMDB_API_KEY
-  console.log(teste)
   return (
     <FormElement onSubmit={handleSubmit(handleSearch)}>
       <span>
