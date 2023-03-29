@@ -32,12 +32,7 @@ export const GlobalStyles = createGlobalStyle`
   a:hover {
     color: #535bf2;
   }
-
-  body {
-    min-height: 100vh;
-    overflow: hidden;
-  }
-
+  
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

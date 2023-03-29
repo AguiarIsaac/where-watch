@@ -5,6 +5,7 @@ export const FormElement = styled.form`
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
+  height: 30%;
 
   span {
     display: flex;

@@ -10,7 +10,7 @@ export const CardElement = styled.div`
   flex-wrap: wrap;
 
   img {
-    width: 12rem;
+    width: 10rem;
     
   }
 `
@@ -34,9 +34,10 @@ export const Content = styled.div`
   }
 
   p {
-    max-width: 500px;
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  max-width: 500px;
+  max-height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   }
 `

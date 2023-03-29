@@ -3,6 +3,7 @@ import background from '../../assets/background.webp'
 
 export const SectionComponent = styled.section`
   position: relative;
+  height: 70%;
 
   &::before {
     content: "";
@@ -28,7 +29,8 @@ export const CardList = styled.div`
   flex-direction: column;
 
   width: 90%;
-  height: 60%;
+  height: 90%;
+  margin: 0 auto;
   margin-top: 2rem;
   overflow-y: scroll;
 

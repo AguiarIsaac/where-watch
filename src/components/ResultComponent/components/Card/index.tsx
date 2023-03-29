@@ -1,19 +1,27 @@
+import axios from "axios";
 import { CardElement, Content } from "./styles";
+const apiKey = process.env.VITE_TMDB_API_KEY
 
 interface CardProps {
+  id: number,
   background: string,
-  streams: {
-    name: string,
-    icon: string
-  }[],
   title: string,
-  launch: string,
   genders: string [],
-  duration: string,
   sinopse: string
 }
 
-export function Card({background, streams, title, launch, genders,duration, sinopse}: CardProps) {
+export function Card({id, background, title, genders, sinopse}: CardProps) {
+
+  axios.get(`https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apiKey}`)
+    .then(response => {
+      // console.log(response.data.results.AD.flatrate[0].provider_name)
+      //BR significa a localidade
+      console.log(response.data.results.BR)
+    })
+    .catch(error => {
+      console.log(error.message)
+    })
+
   return (
     <CardElement>
       <img src={background} alt={title} />
@@ -21,17 +29,10 @@ export function Card({background, streams, title, launch, genders,duration, sino
       <Content>
         <span>
           Disponivel no:
-          {streams.map(stream => {
-            return <a key={stream.name}>
-              <img src={stream.icon} alt={stream.name} />
-            </a>
-          })}  
         </span>
 
-        <h4>{title}</h4>
-        <small>{launch} * {genders.map(gender => { return gender})} * {duration}</small>
-        <h5>Sinopse</h5>
-        <p>{sinopse}</p>
+          <h4>{title}</h4>
+          <p>{sinopse}</p>
       </Content>
     </CardElement>
   )
