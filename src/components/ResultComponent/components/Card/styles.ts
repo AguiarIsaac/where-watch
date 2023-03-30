@@ -4,13 +4,15 @@ export const CardElement = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-end;
   gap: 2rem;
   flex-wrap: wrap;
 
   img {
     width: 10rem;
+    height: 75%;
+    object-fit: contain;
     
   }
 `
@@ -21,6 +23,7 @@ export const Content = styled.div`
   align-items: flex-start;
   gap: 0.75rem;
   height: 100%;
+  justify-content: flex-start;
   
   span {
     display: flex;
@@ -35,9 +38,19 @@ export const Content = styled.div`
 
   p {
   max-width: 500px;
-  max-height: 200px;
+  /* max-height: 200px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-overflow: ellipsis; */
+  /* white-space: nowrap; */
   }
+
+  .error {
+    color: #cf2323;
+  }
+`
+
+export const StreammingList = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 `
