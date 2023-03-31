@@ -1,19 +1,32 @@
 import styled from "styled-components";
+import loanding from '../../../../assets/loanding.svg'
 
 export const CardElement = styled.div`
+  width: 600px;
+  height: 300px;
   position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-end;
   gap: 2rem;
-  flex-wrap: wrap;
+  
 
-  img {
+  .background {
     width: 10rem;
-    height: 75%;
-    object-fit: contain;
-    
+    height: 15rem;
+    background: url(${loanding}) center center no-repeat;
+    background-size: 45px;
+  }
+
+  img.poster {
+    width: 10rem;
+    height: 15rem;
+    object-fit: contain;  
+  }
+
+  @media(max-width: 768px){
+    width: unset;
+    height: unset;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 `
 

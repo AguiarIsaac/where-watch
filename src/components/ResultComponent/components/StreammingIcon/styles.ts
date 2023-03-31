@@ -1,3 +1,4 @@
 import styled from "styled-components";
 
-export const StreamingContent = styled.a``
+export const StreamingContent = styled.a`
+`

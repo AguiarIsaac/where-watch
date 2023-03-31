@@ -52,4 +52,19 @@ export const FormElement = styled.form`
       outline: 1px solid -webkit-focus-ring-color;
     }
   }
+
+  p {
+    text-align: center;
+
+    strong {
+      color: #cf2323;
+    }
+  }
+
+
+  /* @media (prefers-color-scheme: light) {
+    input {
+      border: 1px solid #646cff;
+    }
+  } */
 `

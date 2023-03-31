@@ -26,6 +26,7 @@ export const CardList = styled.div`
   padding: 1rem;
   gap: 2rem;
   display: flex;
+  align-items: center;
   flex-direction: column;
 
   width: 90%;

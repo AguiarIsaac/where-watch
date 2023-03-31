@@ -48,9 +48,13 @@ export function Card({id, background, title, genders, sinopse}: CardProps) {
 
   return (
     <CardElement>
-      <img src={background} alt={title} />
+      <div className="background">
+        <img src={background} alt={title} className='poster'/>
+        {/* <img src="#" alt="teste" /> */}
+      </div>
 
       <Content>
+        <h4>{title}</h4>
         <span>disponível no: </span>
         <StreammingList>
           {providers.length > 0 ? providers.map(provider => {
@@ -61,9 +65,8 @@ export function Card({id, background, title, genders, sinopse}: CardProps) {
                   key={provider.streaming}
                 />
               )
-            }): <small className="error">Ops! não consta nenhum dado de straming disponível</small>}
+            }): <small className="error">Ops! pode não estar disponivel em serviços de streaming</small>}
         </StreammingList>
-          <h4>{title}</h4>
           <p>{sinopse}</p>
       </Content>
     </CardElement>

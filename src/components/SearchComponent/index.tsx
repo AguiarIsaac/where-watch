@@ -42,6 +42,8 @@ export function SearchComponent({functionGetMovie}: SearchProps) {
 
         <button type="submit">Buscar</button>
       </div>
+
+      <p><strong>Beta.</strong> Por enquanto, só filmes!</p>
     </FormElement>
   )
 }

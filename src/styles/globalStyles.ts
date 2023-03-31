@@ -33,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
     color: #535bf2;
   }
   
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -44,5 +44,5 @@ export const GlobalStyles = createGlobalStyle`
   button {
     background-color: #f9f9f9;
   }
-}
+} */
 `
