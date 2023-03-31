@@ -6,20 +6,37 @@ import axios from 'axios'
 
 const apiKey = process.env.VITE_TMDB_API_KEY
 
+interface ResultProps {
+  id: number,
+  mediaType: string
+}[]
+
 export function App() {
 
-  const [ movies, setMovies  ] = useState<number[]>([])
-  
+  const [ result, setResult ] = useState<ResultProps[]>([])
+  const [ notfound, setNotFound ] = useState('')
+
   async function GetResults(query: string) {
 
-    await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=pt-BR&query=${query}&page=1&include_adult=false`)
+    await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${query}&include_adult=false`)
       .then(response => {
 
-        const moviesIds = response.data.results.map((item: any) => {
-          return item.id
-        })
+        const checkResults = response.data.total_results
 
-        setMovies(moviesIds)
+        if(checkResults === 0) {
+          setNotFound('Ops! Numhum registro encontrado.')  
+        } else {
+          
+          const results = response.data.results.map((item: any) => {
+            return {
+              id: item.id,
+              mediaType: item.media_type
+            }
+          })
+          console.log(results)
+          setResult(results)
+        }
+
       })
       .catch(error => {
         console.error(error)
@@ -29,7 +46,7 @@ export function App() {
   return (
     <MainComponent>
       <SearchComponent functionGetMovie={GetResults}/>
-      <ResultComponent listMovies={movies}/>
+      <ResultComponent listResults={result} notFound={notfound}/>
     </MainComponent>
   )
 }
