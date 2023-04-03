@@ -2,8 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Loanding } from "../Loading";
 import { Card } from "./components/Card";
-import { CardList, ErrorMessage, SectionComponent } from "./styles";
+import { CardList, Credits, ErrorMessage, SectionComponent } from "./styles";
 import notImg from '../../assets/smileyx.svg'
+import logotmdb from '../../assets/tmdb.svg'
 
 const apiKey = process.env.VITE_TMDB_API_KEY
 
@@ -86,6 +87,24 @@ export function ResultComponent({listResults, notFound}: ResultProps) {
   return (
     <SectionComponent>
       <CardList>
+
+        {notFound === false && loanding === false && recordsFound.length === 0 && 
+          <Credits>
+            <img src={logotmdb} alt="Themoviedb" />
+            <p>
+              Agradecimentos ao The Movie Database (TMDB) pela disponibilização 
+              dos dados exibidos nesta aplicação. Os dados sobre filmes, séries 
+              e programas de televisão exibidos aqui são fornecidos pela API do 
+              TMDB e são atualizados regularmente. Nós não somos responsáveis 
+              pela criação desses dados, mas apenas pelo acesso e apresentação 
+              dos mesmos em uma forma útil e atraente para nossos usuários. 
+              Para mais informações sobre a base de dados do TMDB, por favor 
+              visite o site deles em <a href="https://www.themoviedb.org/" target="_blanck">
+                https://www.themoviedb.org
+              </a>.
+            </p>
+          </Credits>
+        }
         {loanding && <Loanding />}
 
         {notFound && <ErrorMessage><img src={notImg} alt="not found" /> Ops! nenhum registro encontrado</ErrorMessage>}

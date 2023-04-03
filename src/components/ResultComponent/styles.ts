@@ -60,3 +60,16 @@ export const ErrorMessage = styled.span`
     width: 5rem;
   }
 `
+
+export const Credits = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 500px;
+  text-align: center;
+
+  img {
+    width: 6rem;
+  }
+`
