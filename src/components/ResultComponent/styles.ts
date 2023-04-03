@@ -50,3 +50,13 @@ export const CardList = styled.div`
     border: none;
   }
 `
+
+export const ErrorMessage = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 5rem;
+  }
+`

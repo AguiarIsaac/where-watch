@@ -14,7 +14,7 @@ interface ResultProps {
 export function App() {
 
   const [ result, setResult ] = useState<ResultProps[]>([])
-  const [ notfound, setNotFound ] = useState('')
+  const [notFound, setNotFound] = useState(false)
 
   async function GetResults(query: string) {
 
@@ -23,20 +23,19 @@ export function App() {
 
         const checkResults = response.data.total_results
 
-        if(checkResults === 0) {
-          setNotFound('Ops! Numhum registro encontrado.')  
-        } else {
-          
+        if(checkResults > 0) {          
           const results = response.data.results.map((item: any) => {
             return {
               id: item.id,
               mediaType: item.media_type
             }
           })
-          console.log(results)
+          
           setResult(results)
+          setNotFound(false)
+        } else {
+          setNotFound(true)
         }
-
       })
       .catch(error => {
         console.error(error)
@@ -46,7 +45,7 @@ export function App() {
   return (
     <MainComponent>
       <SearchComponent functionGetMovie={GetResults}/>
-      <ResultComponent listResults={result} notFound={notfound}/>
+      <ResultComponent listResults={result} notFound={notFound}/>
     </MainComponent>
   )
 }
