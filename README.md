@@ -1,7 +1,6 @@
 <h1 align="center"> Where Watch </h1>
 
-![onde assistir](https://github.com/AguiarIsaac/where-watch/assets/37755163/d5b631fc-6588-426a-ada9-165cb93ac90e)
-
+![onde assistir](https://github.com/AguiarIsaac/where-watch/assets/37755163/3b5cdca5-06e1-4710-96d9-1a431fd07938)
 
 ## 📄 Resumo do projeto
 * Consome o API do The Movie Database retornando resultado da pesquisa e em qual serviço de streaming está disponível para assistir.
